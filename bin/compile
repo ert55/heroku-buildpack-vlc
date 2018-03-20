@@ -4,11 +4,10 @@ indent() {
   sed -u 's/^/       /'
 }
 
-echo "-----> Install ffmpeg"
+echo "-----> Install vlc"
 BUILD_DIR=$1
 VENDOR_DIR="vendor"
-#DOWNLOAD_URL="http://flect.github.io/heroku-binaries/libs/ffmpeg.tar.gz"
-DOWNLOAD_URL="https://ert55.github.io/heroku-binaries/libs/ffmpeg.tar.gz"
+DOWNLOAD_URL="https://ert55.github.io/heroku-binaries/libs/vlc.tar.gz"
 echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
 
 cd $BUILD_DIR
@@ -17,7 +16,7 @@ cd $VENDOR_DIR
 curl -L --silent $DOWNLOAD_URL | tar xz
 
 echo "exporting PATH and LIBRARY_PATH" | indent
-PROFILE_PATH="$BUILD_DIR/.profile.d/ffmpeg.sh"
+PROFILE_PATH="$BUILD_DIR/.profile.d/vlc.sh"
 mkdir -p $(dirname $PROFILE_PATH)
-echo 'export PATH="$PATH:$HOME/vendor/ffmpeg/bin"' >> $PROFILE_PATH
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/vendor/ffmpeg/lib"' >> $PROFILE_PATH
+echo 'export PATH="$PATH:$HOME/vendor/vlc/bin"' >> $PROFILE_PATH
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/vendor/vlc/lib"' >> $PROFILE_PATH
